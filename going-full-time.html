@@ -15,9 +15,9 @@
       </div>
     </div>
 
-    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+    <button class="menu-toggle" aria-label="Open menu" aria-controls="site-navigation" aria-expanded="false">☰</button>
 
-    <nav class="nav">
+    <nav class="nav" id="site-navigation" aria-label="Main navigation">
       <a href="index.html">Home</a>
       <a href="going-full-time.html">Going Full-Time</a>
       <a href="repairs.html">Repairs & How-To</a>
@@ -33,12 +33,14 @@ const nav = document.querySelector('.nav');
 toggle?.addEventListener('click', () => {
   const isOpen = nav.classList.toggle('open');
   toggle.setAttribute('aria-expanded', String(isOpen));
+  toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
 });
 
 nav?.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     nav.classList.remove('open');
     toggle?.setAttribute('aria-expanded', 'false');
+    toggle?.setAttribute('aria-label', 'Open menu');
   });
 });
 </script></body></html>

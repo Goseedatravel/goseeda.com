@@ -19,9 +19,9 @@
       </div>
     </div>
 
-    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+    <button class="menu-toggle" aria-label="Open menu" aria-controls="site-navigation" aria-expanded="false">☰</button>
 
-    <nav class="nav">
+    <nav class="nav" id="site-navigation" aria-label="Main navigation">
       <a href="#home">Home</a>
       <a href="going-full-time.html">Going Full-Time</a>
       <a href="repairs.html">Repairs & How-To</a>
@@ -113,7 +113,7 @@
           <p class="section-kicker">ABOUT US</p>
           <h2>We’re Goseeda.</h2>
           <p>A full-time RV family chasing experiences, not stuff. We share what works, what breaks, where we go, and what we learn along the way.</p>
-          <a class="text-link" href="#contact">Read Our Story →</a>
+          <a class="text-link" href="#contact">Get in touch</a>
         </div>
         <img src="assets/site-6.jpg" alt="The Goseeda family at the beach">
       </div>
@@ -123,25 +123,13 @@
       <p class="section-kicker">FROM THE ROAD</p>
       <div class="blog-head">
         <h2>Latest Goseeda Stories</h2>
-        <p>This is where each Sunday video can become a searchable article with the video, photos, parts used, campground notes, and lessons learned.</p>
+        <p>Practical guides and lessons from our family’s life on the road.</p>
       </div>
       <div class="post-grid">
-        <article class="post">
-          <span>REPAIRS</span>
-          <h3>When Something Breaks, We Show the Whole Fix</h3>
-          <p>Real-world repair notes, what worked, what didn’t, and what we’d do differently next time.</p>
-        </article>
-        <article class="post">
-          <span>TRAVEL</span>
-          <h3>RV Destinations Worth the Drive</h3>
-          <p>What to see, where to stay, and what families traveling by RV should know before arriving.</p>
-        </article>
-        <article class="post">
-          <span>RV LIFE</span>
-          <h3>What Full-Time RV Life Actually Looks Like</h3>
-          <p>The practical side of living in a fifth wheel with teenagers, travel days, maintenance, and everything in between.</p>
-        </article>
-      </div>
+<article class="post"><span>RV INTERNET</span><h3>Why We Chose Starlink</h3><p>How we stay connected, what works, and where trees can cause problems.</p><a class="text-link" href="full-time-rv-internet-starlink.html">Read our experience</a></article>
+<article class="post"><span>REPAIRS</span><h3>Repairing Our RV Fender Skirts</h3><p>The materials, repair process, costs, and lessons from our own fifth wheel.</p><a class="text-link" href="rv-fender-skirt-repair.html">Read the repair</a></article>
+<article class="post"><span>RV GEAR</span><h3>Mopeka Propane Sensors</h3><p>Our experience with setup, tank readings, and monitoring propane on the road.</p><a class="text-link" href="mopeka-propane-sensor-review.html">Read the review</a></article>
+</div>
     </section>
 
     <section class="section portfolio" id="ugc"><p class="section-kicker">WORK WITH GOSEEDA · UGC PORTFOLIO</p><h2>Real products. Life on the road.</h2><p class="portfolio-intro">We’re Paul and Janet, a full-time RV family. We create product demonstrations, practical how-to videos, and destination stories grounded in what we actually use and experience. For RV, outdoor, and travel brands, that means showing a product in the everyday situations it was made for.</p><div class="portfolio-grid">
@@ -173,12 +161,14 @@ const nav = document.querySelector('.nav');
 toggle?.addEventListener('click', () => {
   const isOpen = nav.classList.toggle('open');
   toggle.setAttribute('aria-expanded', String(isOpen));
+  toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
 });
 
 nav?.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     nav.classList.remove('open');
     toggle?.setAttribute('aria-expanded', 'false');
+    toggle?.setAttribute('aria-label', 'Open menu');
   });
 });
 </script></body>
